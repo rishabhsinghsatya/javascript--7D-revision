@@ -12,6 +12,7 @@ console.log(counter()); // Output: 2
 console.log(counter()); // Output: 3
 
 //another
+let a = 20;
 function outer() {
   let name = "javascript";
   function inner() {
@@ -20,6 +21,7 @@ function outer() {
 
     console.log(game); // game from inner function
     console.log(name); // javascript access from outer function in inner function()
+    console.log(`${a} access from the global variable`); // 20
   }
   inner();
 }
