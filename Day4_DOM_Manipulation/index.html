@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 4: DOM Manipulation</title>
+  <style>
+    .button {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: gray;
+      margin: 5px;
+    }
+    .container {
+      margin: 20px;
+    }
+    .remove-me {
+      background-color: red;
+      color: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="header">Original Header</h1>
+  
+  <div class="container">
+    <button class="button">Click Me</button>
+    <div class="box"></div>
+    <form>
+      <input type="text" placeholder="Type something">
+      <button type="submit">Submit</button>
+    </form>
+    <div class="remove-me">Remove Me</div>
+  </div>
+
+  <script src="selectElements.js"></script>
+ 
+</body>
+</html>
