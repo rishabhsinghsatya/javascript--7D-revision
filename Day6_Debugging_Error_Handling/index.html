@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debugging and Error Handling</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      input,
+      button {
+        margin: 5px;
+      }
+      p {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Debugging and Error Handling Example</h1>
+
+    <!-- Input field for number processing example -->
+    <input type="text" id="numberInput" placeholder="Enter a number" />
+    <button onclick="processNumber()">Process Number</button>
+
+    <p id="output"></p>
+
+    <script>
+      function processNumber() {
+        const output = document.getElementById("output");
+        const numberInput = document.getElementById("numberInput").value.trim();
+
+        try {
+          console.log("User input:", numberInput);
+
+          if (isNaN(numberInput)) {
+            console.error("Error: Input is not a number");
+            throw new Error("Input is not a number!");
+          }
+
+          const number = parseFloat(numberInput);
+
+          if (number < 0) {
+            console.warn("Warning: Number is negative");
+            throw new Error("Number must be positive!");
+          }
+
+          const result = number * number;
+          output.textContent = `The square of ${number} is ${result}.`;
+
+          console.log("Number processed successfully:", result);
+        } catch (error) {
+          // Handle errors
+          output.textContent = `Error: ${error.message}`;
+          console.error("Error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
