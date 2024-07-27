@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage CRUD Operations</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      input {
+        margin: 5px;
+      }
+      button {
+        margin: 5px;
+      }
+      p {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Local Storage CRUD Operations</h1>
+
+    <!-- Form for input data -->
+    <label for="keyInput">Key:</label>
+    <input type="text" id="keyInput" placeholder="Enter key" />
+
+    <label for="valueInput">Value:</label>
+    <input type="text" id="valueInput" placeholder="Enter value" />
+
+    <!-- Buttons for CRUD operations -->
+    <button onclick="createData()">Create</button>
+    <button onclick="readData()">Read</button>
+    <button onclick="updateData()">Update</button>
+    <button onclick="deleteData()">Delete</button>
+    <button onclick="clearAllData()">Clear All</button>
+
+    <!-- Output area -->
+    <p id="output"></p>
+    <div id="storedData"></div>
+
+    <script>
+      // Function to initialize and display stored data on page load
+      function displayStoredData() {
+        const storedDataDiv = document.getElementById("storedData");
+        storedDataDiv.innerHTML = "<h2>Stored Data:</h2>";
+        if (localStorage.length === 0) {
+          storedDataDiv.innerHTML += "<p>No data in local storage.</p>";
+        } else {
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            storedDataDiv.innerHTML += `<p>${key}: ${value}</p>`;
+          }
+        }
+      }
+
+      // Create data in local storage
+      function createData() {
+        const key = document.getElementById("keyInput").value;
+        const value = document.getElementById("valueInput").value;
+        if (key && value) {
+          localStorage.setItem(key, value);
+          document.getElementById(
+            "output"
+          ).innerText = `Created: ${key} = ${value}`;
+        } else {
+          document.getElementById("output").innerText =
+            "Please enter both key and value.";
+        }
+        displayStoredData();
+      }
+
+      // Read data from local storage
+      function readData() {
+        const key = document.getElementById("keyInput").value;
+        if (key) {
+          const value = localStorage.getItem(key);
+          document.getElementById("output").innerText = value
+            ? `Read: ${key} = ${value}`
+            : "No data found.";
+        } else {
+          document.getElementById("output").innerText = "Please enter a key.";
+        }
+      }
+
+      // Update data in local storage
+      function updateData() {
+        const key = document.getElementById("keyInput").value;
+        const value = document.getElementById("valueInput").value;
+        if (key && value) {
+          if (localStorage.getItem(key) !== null) {
+            localStorage.setItem(key, value);
+            document.getElementById(
+              "output"
+            ).innerText = `Updated: ${key} = ${value}`;
+          } else {
+            document.getElementById("output").innerText =
+              "Key does not exist. Use Create to add new data.";
+          }
+        } else {
+          document.getElementById("output").innerText =
+            "Please enter both key and value.";
+        }
+        displayStoredData();
+      }
+
+      // Delete data from local storage
+      function deleteData() {
+        const key = document.getElementById("keyInput").value;
+        if (key) {
+          if (localStorage.getItem(key) !== null) {
+            localStorage.removeItem(key);
+            document.getElementById("output").innerText = `Deleted: ${key}`;
+          } else {
+            document.getElementById("output").innerText = "Key does not exist.";
+          }
+        } else {
+          document.getElementById("output").innerText = "Please enter a key.";
+        }
+        displayStoredData();
+      }
+
+      // Clear all data from local storage
+      function clearAllData() {
+        localStorage.clear();
+        document.getElementById("output").innerText = "All data cleared.";
+        displayStoredData();
+      }
+
+      // Display stored data on page load
+      window.onload = displayStoredData;
+    </script>
+  </body>
+</html>
