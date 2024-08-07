@@ -94,12 +94,6 @@ This repository contains a structured revision plan for JavaScript, covering ess
 3. Modern Techniques (spread/rest operators, destructuring, template literals)
 4. Final Review
 
-### Files
-- **codeQuality.js**: Writing clean and maintainable code.
-- **modularJavaScript.js**: Using import/export for modular JavaScript.
-- **modernTechniques.js**: Spread/rest operators, destructuring, template literals.
-- **finalReview.js**: Summary and final review of all topics.
-
 ## How to Use
 Each day's folder contains JavaScript files with examples and explanations of the topics covered. Clone the repository and explore the code to reinforce your understanding.
 
